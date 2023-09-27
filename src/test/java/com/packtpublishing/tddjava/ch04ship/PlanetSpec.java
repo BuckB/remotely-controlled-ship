@@ -16,7 +16,7 @@ public class PlanetSpec {
 
     @BeforeMethod
     public void beforeTest() {
-        obstacles = new ArrayList<Point>();
+        obstacles = new ArrayList<>();
         obstacles.add(new Point(12, 13));
         obstacles.add(new Point(16, 32));
         planet = new Planet(max, obstacles);

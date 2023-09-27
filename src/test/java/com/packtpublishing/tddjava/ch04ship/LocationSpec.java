@@ -21,7 +21,7 @@ public class LocationSpec {
     public void beforeTest() {
         max = new Point(50, 50);
         location = new Location(new Point(x, y), direction);
-        obstacles = new ArrayList<Point>();
+        obstacles = new ArrayList<>();
     }
 
     public void whenInstantiatedThenXIsStored() {
