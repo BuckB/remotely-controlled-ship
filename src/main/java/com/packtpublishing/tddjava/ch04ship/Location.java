@@ -7,24 +7,25 @@ public class Location {
 
     private static final int FORWARD = 1;
     private static final int BACKWARD = -1;
+    private Point point;
+    private Direction direction;
 
     public int getX() {
-        return point.getX();
+        return this.point.getX();
     }
 
     public int getY() {
-        return point.getY();
+        return this.point.getY();
     }
 
-    private Point point;
     public Point getPoint() {
-        return point;
+        return this.point;
     }
 
-    private Direction direction;
     public Direction getDirection() {
         return this.direction;
     }
+
     public void setDirection(Direction direction) {
         this.direction = direction;
     }
@@ -35,46 +36,43 @@ public class Location {
     }
 
     public boolean forward() {
-        return move(FORWARD, new Point(100, 100), new ArrayList<>());
+        return this.move(FORWARD, new Point(100, 100), new ArrayList<>());
     }
+
     public boolean forward(Point max) {
-        return move(FORWARD, max, new ArrayList<>());
+        return this.move(FORWARD, max, new ArrayList<>());
     }
+
     public boolean forward(Point max, List<Point> obstacles) {
-        return move(FORWARD, max, obstacles);
+        return this.move(FORWARD, max, obstacles);
     }
 
     public boolean backward() {
-        return move(BACKWARD, new Point(100, 100), new ArrayList<>());
+        return this.move(BACKWARD, new Point(100, 100), new ArrayList<>());
     }
+
     public boolean backward(Point max) {
-        return move(BACKWARD, max, new ArrayList<>());
+        return this.move(BACKWARD, max, new ArrayList<>());
     }
+
     public boolean backward(Point max, List<Point> obstacles) {
-        return move(BACKWARD, max, obstacles);
+        return this.move(BACKWARD, max, obstacles);
     }
 
     private boolean move(int fw, Point max, List<Point> obstacles) {
-        int x = point.getX();
-        int y = point.getY();
-        switch(getDirection()) {
-            case NORTH:
-                y = wrap(getY() - fw, max.getY());
-                break;
-            case SOUTH:
-                y = wrap(getY() + fw, max.getY());
-                break;
-            case EAST:
-                x = wrap(getX() + fw, max.getX());
-                break;
-            case WEST:
-                x = wrap(getX() - fw, max.getX());
-                break;
+        int x = this.point.getX();
+        int y = this.point.getY();
+        switch (this.getDirection()) {
+            case NORTH -> y = this.wrap(this.getY() - fw, max.getY());
+            case SOUTH -> y = this.wrap(this.getY() + fw, max.getY());
+            case EAST -> x = this.wrap(this.getX() + fw, max.getX());
+            case WEST -> x = this.wrap(this.getX() - fw, max.getX());
+            default -> throw new IllegalArgumentException("Unexpected value: " + this.getDirection());
         }
-        if (isObstacle(new Point(x, y), obstacles)) {
+        if (this.isObstacle(new Point(x, y), obstacles)) {
             return false;
         } else {
-            point = new Point(x, y);
+            this.point = new Point(x, y);
             return true;
         }
     }
@@ -100,25 +98,34 @@ public class Location {
     }
 
     public void turnLeft() {
-        this.direction = direction.turnLeft();
+        this.direction = this.direction.turnLeft();
     }
 
     public void turnRight() {
-        this.direction = direction.turnRight();
+        this.direction = this.direction.turnRight();
     }
 
     public Location copy() {
-        return new Location(new Point(point.getX(), point.getY()), direction);
+        return new Location(new Point(this.point.getX(), this.point.getY()), this.direction);
     }
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Location location = (Location) o;
-        if (getX() != location.getX()) return false;
-        if (getY() != location.getY()) return false;
-        if (direction != location.direction) return false;
-        return true;
+        // if (this == o)
+        // return true;
+        // if (o == null || this.getClass() != o.getClass())
+        // return false;
+        // Location location = (Location) o;
+        // if (this.getX() != location.getX())
+        // return false;
+        // if (this.getY() != location.getY())
+        // return false;
+        // if (this.direction != location.direction)
+        // return false;
+        // return true;
+        return this == o || o instanceof Location other &&
+                other.getX() == this.getX() &&
+                other.getY() == this.getY() &&
+                other.direction.equals(this.direction);
     }
 }
