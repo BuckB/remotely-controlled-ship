@@ -19,4 +19,8 @@ public class Ship {
     public boolean moveBackward() {
         return this.location.backward();
     }
+
+    public void moveLeft() {
+        this.location.turnLeft();
+    }
 }

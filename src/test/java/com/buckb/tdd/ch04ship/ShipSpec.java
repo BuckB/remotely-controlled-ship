@@ -26,17 +26,27 @@ public class ShipSpec {
 
     @Test
     public void given_ship_moves_when_moveForward_then_forward() {
-        Location expected = this.location.copy();
-        expected.forward();
+        this.location.forward();
         this.ship.moveForward();
-        assertEquals(this.ship.location(), expected);
+        assertEquals(this.ship.location(), this.location);
     }
 
     @Test
     public void given_ship_moves_when_moveBackwards_then_backwards() {
-        Location expected = this.location.copy();
-        expected.backward();
+        this.location.backward();
         this.ship.moveBackward();
-        assertEquals(this.ship.location(), expected);
+        assertEquals(this.ship.location(), this.location);
     }
+
+    @Test
+    public void given_ship_moves_when_moveLeft_then_left() {
+        this.location.turnLeft();
+        this.ship.moveLeft();
+        assertEquals(this.ship.location(), this.location);
+    }
+
+    @Test
+    public void given_ship_moves_when_moveRight_then_right() {
+    }
+
 }
