@@ -20,5 +20,5 @@ public class ShipSpec {
 
     public void given_new_ship_then_location_is_set() {
         assertEquals(this.ship.location(), this.location);
-;    }
+    }
 }
