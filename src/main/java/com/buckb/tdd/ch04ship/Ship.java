@@ -23,4 +23,8 @@ public class Ship {
     public void moveLeft() {
         this.location.turnLeft();
     }
+
+    public void moveRight() {
+        this.location.turnRight();
+    }
 }

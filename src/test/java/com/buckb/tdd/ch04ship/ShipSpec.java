@@ -47,6 +47,9 @@ public class ShipSpec {
 
     @Test
     public void given_ship_moves_when_moveRight_then_right() {
+        this.location.turnRight();
+        this.ship.moveRight();
+        assertEquals(this.ship.location(), this.location);
     }
 
 }
