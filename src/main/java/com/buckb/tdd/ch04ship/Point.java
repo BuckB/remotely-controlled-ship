@@ -1,10 +1,10 @@
-package com.packtpublishing.tddjava.ch04ship;
+package com.buckb.tdd.ch04ship;
 
 public class Point {
 
     private int x;
     public int getX() {
-        return x;
+        return this.x;
     }
     public void setX(int x) {
         this.x = x;
@@ -12,7 +12,7 @@ public class Point {
 
     private int y;
     public int getY() {
-        return y;
+        return this.y;
     }
     public void setY(int y) {
         this.y = y;

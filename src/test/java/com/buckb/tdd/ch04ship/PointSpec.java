@@ -1,4 +1,4 @@
-package com.packtpublishing.tddjava.ch04ship;
+package com.buckb.tdd.ch04ship;
 
 import org.testng.annotations.*;
 import static org.testng.Assert.*;
@@ -12,15 +12,17 @@ public class PointSpec {
 
     @BeforeMethod
     public void beforeTest() {
-        point = new Point(x, y);
+        this.point = new Point(this.x, this.y);
     }
 
+    @Test
     public void whenInstantiatedThenXIsSet() {
-        assertEquals(point.getX(), x);
+        assertEquals(this.point.getX(), this.x);
     }
 
+    @Test
     public void whenInstantiatedThenYIsSet() {
-        assertEquals(point.getY(), y);
+        assertEquals(this.point.getY(), this.y);
     }
 
 }
