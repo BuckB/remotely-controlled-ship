@@ -1,4 +1,4 @@
-package com.packtpublishing.tddjava.ch04ship;
+package com.buckb.tdd.ch04ship;
 
 import org.testng.annotations.*;
 
@@ -16,18 +16,20 @@ public class PlanetSpec {
 
     @BeforeMethod
     public void beforeTest() {
-        obstacles = new ArrayList<>();
-        obstacles.add(new Point(12, 13));
-        obstacles.add(new Point(16, 32));
-        planet = new Planet(max, obstacles);
+        this.obstacles = new ArrayList<>();
+        this.obstacles.add(new Point(12, 13));
+        this.obstacles.add(new Point(16, 32));
+        this.planet = new Planet(this.max, this.obstacles);
     }
 
+    @Test
     public void whenInstantiatedThenMaxIsSet() {
-        assertEquals(planet.getMax(), max);
+        assertEquals(this.planet.getMax(), this.max);
     }
 
+    @Test
     public void whenInstantiatedThenObstaclesAreSet() {
-        assertEquals(planet.getObstacles(), obstacles);
+        assertEquals(this.planet.getObstacles(), this.obstacles);
     }
 
 }
