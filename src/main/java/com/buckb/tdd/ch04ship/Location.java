@@ -1,4 +1,4 @@
-package com.packtpublishing.tddjava.ch04ship;
+package com.buckb.tdd.ch04ship;
 
 import java.util.ArrayList;
 import java.util.List;
