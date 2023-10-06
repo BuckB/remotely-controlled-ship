@@ -1,4 +1,4 @@
-package com.packtpublishing.tddjava.ch04ship;
+package com.buckb.tdd.ch04ship;
 
 public enum Direction {
 
@@ -11,8 +11,8 @@ public enum Direction {
     private final int value;
     private final char shortName;
     private Direction(final int newValue, final char shortNameValue) {
-        value = newValue;
-        shortName = shortNameValue;
+        this.value = newValue;
+        this.shortName = shortNameValue;
     }
 
     public static Direction getFromShortName(final char shortName) {
@@ -25,12 +25,12 @@ public enum Direction {
     }
 
     public Direction turnLeft() {
-        int index = (value + 3) % 4;
+        int index = (this.value + 3) % 4;
         return Direction.values()[index];
     }
 
     public Direction turnRight() {
-        int index = (value + 1) % 4;
+        int index = (this.value + 1) % 4;
         return Direction.values()[index];
     }
 
