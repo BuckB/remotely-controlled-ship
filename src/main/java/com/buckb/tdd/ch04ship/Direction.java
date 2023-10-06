@@ -10,18 +10,20 @@ public enum Direction {
 
     private final int value;
     private final char shortName;
+
     private Direction(final int newValue, final char shortNameValue) {
         this.value = newValue;
         this.shortName = shortNameValue;
     }
 
     public static Direction getFromShortName(final char shortName) {
+        var result = Direction.NONE;
         for (Direction direction : Direction.values()) {
             if (direction.shortName == shortName) {
-                return direction;
+                result = direction;
             }
         }
-        return Direction.NONE;
+        return result;
     }
 
     public Direction turnLeft() {
