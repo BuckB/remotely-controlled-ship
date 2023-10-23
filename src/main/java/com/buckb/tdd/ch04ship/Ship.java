@@ -27,4 +27,11 @@ public class Ship {
     public void moveRight() {
         this.location.turnRight();
     }
+
+    public void readCommand(String command) {
+        switch (command.toLowerCase()) {
+            case "f" -> this.moveForward();
+            default -> throw new IllegalArgumentException("Invalid command: " + command);
+        }
+    }
 }

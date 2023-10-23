@@ -52,4 +52,10 @@ public class ShipSpec {
         assertEquals(this.ship.location(), this.location);
     }
 
+    @Test
+    public void given_ship_readsCommand_when_f_then_moveForward() {
+        this.location.forward();
+        this.ship.readCommand("f");
+        assertEquals(this.ship.location(), this.location);
+    }
 }
