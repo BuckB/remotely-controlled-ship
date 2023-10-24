@@ -65,4 +65,11 @@ public class ShipSpec {
         this.ship.readCommand("b");
         assertEquals(this.ship.location(), this.location);
     }
+
+    @Test
+    public void given_ship_readsCommand_when_r_then_turnRight() {
+        this.location.turnRight();
+        this.ship.readCommand("r");
+        assertEquals(this.ship.location(), this.location);
+    }
 }
