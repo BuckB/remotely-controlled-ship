@@ -33,6 +33,7 @@ public class Ship {
             case "f" -> this.moveForward();
             case "b" -> this.moveBackward();
             case "r" -> this.moveRight();
+            case "l" -> this.moveLeft();
             default -> throw new IllegalArgumentException("Invalid command: " + command);
         }
     }

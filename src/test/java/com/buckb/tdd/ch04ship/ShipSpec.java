@@ -4,6 +4,7 @@ import org.testng.annotations.*;
 import static org.testng.Assert.*;
 
 @Test
+@SuppressWarnings("all")
 public class ShipSpec {
 
     private Ship ship;
@@ -67,9 +68,16 @@ public class ShipSpec {
     }
 
     @Test
-    public void given_ship_readsCommand_when_r_then_turnRight() {
+    public void given_ship_readsCommand_when_r_then_moveRight() {
         this.location.turnRight();
         this.ship.readCommand("r");
+        assertEquals(this.ship.location(), this.location);
+    }
+
+    @Test
+    public void given_ship_readsCommand_when_l_then_moveLeft() {
+        this.location.turnLeft();
+        this.ship.readCommand("l");
         assertEquals(this.ship.location(), this.location);
     }
 }
