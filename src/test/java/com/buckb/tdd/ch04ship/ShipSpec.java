@@ -58,4 +58,11 @@ public class ShipSpec {
         this.ship.readCommand("f");
         assertEquals(this.ship.location(), this.location);
     }
+
+    @Test
+    public void given_ship_readsCommand_when_b_then_moveBackward() {
+        this.location.backward();
+        this.ship.readCommand("b");
+        assertEquals(this.ship.location(), this.location);
+    }
 }
