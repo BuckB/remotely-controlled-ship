@@ -29,12 +29,14 @@ public class Ship {
     }
 
     public void readCommand(String command) {
-        switch (command.toLowerCase()) {
-            case "f" -> this.moveForward();
-            case "b" -> this.moveBackward();
-            case "r" -> this.moveRight();
-            case "l" -> this.moveLeft();
-            default -> throw new IllegalArgumentException("Invalid command: " + command);
+        for (char direction : command.toLowerCase().toCharArray()) {
+            switch (direction) {
+                case 'f' -> this.moveForward();
+                case 'b' -> this.moveBackward();
+                case 'r' -> this.moveRight();
+                case 'l' -> this.moveLeft();
+                default -> throw new IllegalArgumentException("Invalid command: " + command);
+            }
         }
     }
 }

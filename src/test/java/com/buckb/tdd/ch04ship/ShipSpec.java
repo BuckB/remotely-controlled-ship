@@ -80,4 +80,14 @@ public class ShipSpec {
         this.ship.readCommand("l");
         assertEquals(this.ship.location(), this.location);
     }
+
+    @Test
+    public void given_ship_readsCommand_when_multiple_commands_then_execute_all() {
+        this.location.backward();
+        this.location.turnRight();
+        this.location.forward();
+        this.location.turnLeft();
+        this.ship.readCommand("brfl");
+        assertEquals(this.ship.location(), this.location);
+    }
 }
