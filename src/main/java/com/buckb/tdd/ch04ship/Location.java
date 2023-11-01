@@ -112,21 +112,18 @@ public class Location {
 
     @Override
     public boolean equals(Object o) {
-        // if (this == o)
-        // return true;
-        // if (o == null || this.getClass() != o.getClass())
-        // return false;
-        // Location location = (Location) o;
-        // if (this.getX() != location.getX())
-        // return false;
-        // if (this.getY() != location.getY())
-        // return false;
-        // if (this.direction != location.direction)
-        // return false;
-        // return true;
         return this == o || o instanceof Location other &&
                 other.getX() == this.getX() &&
                 other.getY() == this.getY() &&
                 other.direction.equals(this.direction);
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((this.point == null) ? 0 : this.point.hashCode());
+        result = prime * result + ((this.direction == null) ? 0 : this.direction.hashCode());
+        return result;
     }
 }
