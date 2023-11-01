@@ -19,7 +19,7 @@ public class Ship {
     }
 
     public boolean moveForward() {
-        return this.location.forward();
+        return this.location.forward(this.planet.getMax());
     }
 
     public boolean moveBackward() {

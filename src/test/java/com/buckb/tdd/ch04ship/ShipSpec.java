@@ -21,7 +21,7 @@ public class ShipSpec {
         this.location = new Location(this.point, Direction.NORTH);
         this.maxPoint = new Point(50, 50);
         this.planet = new Planet(this.maxPoint);
-        this.ship = new Ship(new Location(new Point(this.x, this.y), Direction.NORTH), this.planet);
+        this.ship = new Ship(this.location, this.planet);
     }
 
     @Test
@@ -98,5 +98,13 @@ public class ShipSpec {
         this.location.turnLeft();
         this.ship.readCommand("brfl");
         assertEquals(this.ship.location(), this.location);
+    }
+
+    @Test
+    public void when_ship_moves_overpass_x_boundary() {
+        this.location.setDirection(Direction.EAST);
+        this.location.getPoint().setX(this.planet.getMax().getX());
+        this.ship.readCommand("f");
+        assertEquals(this.location.getX(), 1);
     }
 }
