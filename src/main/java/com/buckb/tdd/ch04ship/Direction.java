@@ -25,7 +25,17 @@ public enum Direction {
         }
         return result;
     }
-
+/*
+    public static Direction getFromShortName(final char shortName) {
+        return switch (shortName) {
+            case 'E' -> Direction.EAST;
+            case 'S' -> Direction.SOUTH;
+            case 'W' -> Direction.WEST;
+            case 'N' -> Direction.NORTH;
+            default -> Direction.NONE;
+        };
+    }
+ */
     public Direction turnLeft() {
         int index = (this.value + 3) % 4;
         return Direction.values()[index];
