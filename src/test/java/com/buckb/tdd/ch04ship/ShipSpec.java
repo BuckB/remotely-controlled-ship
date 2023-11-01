@@ -101,10 +101,18 @@ public class ShipSpec {
     }
 
     @Test
-    public void when_ship_moves_overpass_x_boundary() {
+    public void when_ship_moves_forward_overpass_x_boundary_east() {
         this.location.setDirection(Direction.EAST);
         this.location.getPoint().setX(this.planet.getMax().getX());
         this.ship.readCommand("f");
+        assertEquals(this.location.getX(), 1);
+    }
+
+    @Test
+    public void when_ship_moves_backward_overpass_x_boundary_east() {
+        this.location.setDirection(Direction.WEST);
+        this.location.getPoint().setX(this.planet.getMax().getX());
+        this.ship.readCommand("b");
         assertEquals(this.location.getX(), 1);
     }
 }
