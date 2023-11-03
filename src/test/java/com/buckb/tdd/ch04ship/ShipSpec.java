@@ -115,4 +115,13 @@ public class ShipSpec {
         this.ship.readCommand("b");
         assertEquals(this.location.getX(), 1);
     }
+
+    @Test
+    public void when_ship_moves_forward_overpass_x_boundary_west() {
+        this.location.setDirection(Direction.WEST);
+        this.location.getPoint().setX(0);
+        this.ship.readCommand("f");
+        assertEquals(this.location.getX(), 50);
+    }
+
 }

@@ -91,7 +91,7 @@ public class Location {
         if (maxPoint > 0) {
             if (point > maxPoint) {
                 result = 1;
-            } else if (point == 0) {
+            } else if (point <= 0) {
                 result = maxPoint;
             }
         }
