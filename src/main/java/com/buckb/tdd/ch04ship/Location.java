@@ -63,8 +63,8 @@ public class Location {
         int x = this.point.getX();
         int y = this.point.getY();
         switch (this.getDirection()) {
-            case NORTH -> y = this.wrap(this.getY() - fw, max.getY());
-            case SOUTH -> y = this.wrap(this.getY() + fw, max.getY());
+            case NORTH -> y = this.wrap(this.getY() + fw, max.getY());
+            case SOUTH -> y = this.wrap(this.getY() - fw, max.getY());
             case EAST -> x = this.wrap(this.getX() + fw, max.getX());
             case WEST -> x = this.wrap(this.getX() - fw, max.getX());
             default -> throw new IllegalArgumentException("Unexpected value: " + this.getDirection());
