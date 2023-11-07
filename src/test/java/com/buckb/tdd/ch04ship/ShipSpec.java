@@ -121,7 +121,7 @@ public class ShipSpec {
         this.location.setDirection(Direction.WEST);
         this.location.getPoint().setX(0);
         this.ship.readCommand("f");
-        assertEquals(this.location.getX(), 50);
+        assertEquals(this.location.getX(), this.planet.getMax().getX());
     }
 
     @Test
@@ -129,7 +129,7 @@ public class ShipSpec {
         this.location.setDirection(Direction.EAST);
         this.location.getPoint().setX(0);
         this.ship.readCommand("b");
-        assertEquals(this.location.getX(), 50);
+        assertEquals(this.location.getX(), this.planet.getMax().getX());
     }
 
     @Test
@@ -138,5 +138,29 @@ public class ShipSpec {
         this.location.getPoint().setY(this.planet.getMax().getY());
         this.ship.readCommand("f");
         assertEquals(this.location.getY(), 1);
+    }
+
+    @Test
+    public void when_ship_moves_backward_overpass_y_boundary_north() {
+        this.location.setDirection(Direction.SOUTH);
+        this.location.getPoint().setY(this.planet.getMax().getY());
+        this.ship.readCommand("b");
+        assertEquals(this.location.getY(), 1);
+    }
+
+    @Test
+    public void when_ship_moves_forward_overpass_y_boundary_south() {
+        this.location.setDirection(Direction.SOUTH);
+        this.location.getPoint().setY(0);
+        this.ship.readCommand("f");
+        assertEquals(this.location.getY(), this.planet.getMax().getY());
+    }
+
+    @Test
+    public void when_ship_moves_backward_overpass_y_boundary_south() {
+        this.location.setDirection(Direction.NORTH);
+        this.location.getPoint().setY(0);
+        this.ship.readCommand("b");
+        assertEquals(this.location.getY(), this.planet.getMax().getY());
     }
 }
